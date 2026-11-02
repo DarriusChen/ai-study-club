@@ -59,7 +59,13 @@ const sections = [
         <p>{section.description}</p>
         {materials.length > 0 ? <div class="material-links">
           {materials.map((material, index) => <div>
-            <a class={index === 0 ? 'button' : 'text-link'} href={materialUrl(course.id, material.href)}>{material.label}</a>
+            <a
+              class={index === 0 ? 'button' : 'text-link'}
+              href={materialUrl(course.id, material.href)}
+              target={material.category === 'slides' ? '_blank' : undefined}
+              rel={material.category === 'slides' ? 'noopener noreferrer' : undefined}
+              aria-label={material.category === 'slides' ? `${material.label}（開啟新分頁）` : undefined}
+            >{material.label}{material.category === 'slides' && <span aria-hidden="true"> ↗</span>}</a>
             {material.description && <p>{material.description}</p>}
           </div>)}
         </div> : <p class="material-empty">{section.subtitle}尚未提供，之後會整理在這裡。</p>}

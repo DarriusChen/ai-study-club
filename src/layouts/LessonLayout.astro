@@ -40,8 +40,14 @@ const courseUrl = `${base}courses/${course.id}/`;
       {!overview && <nav class="lesson-nav" aria-label="這門課的教材">
         <a href={courseUrl}>主題首頁</a>
         {course.data.materials.map((material) => (
-          <a href={materialUrl(course.id, material.href)} aria-current={Astro.url.pathname === materialUrl(course.id, material.href) ? 'page' : undefined}>
-            {material.label}
+          <a
+            href={materialUrl(course.id, material.href)}
+            aria-current={Astro.url.pathname === materialUrl(course.id, material.href) ? 'page' : undefined}
+            target={material.category === 'slides' ? '_blank' : undefined}
+            rel={material.category === 'slides' ? 'noopener noreferrer' : undefined}
+            aria-label={material.category === 'slides' ? `${material.label}（開啟新分頁）` : undefined}
+          >
+            {material.label}{material.category === 'slides' && <span aria-hidden="true"> ↗</span>}
           </a>
         ))}
       </nav>}
