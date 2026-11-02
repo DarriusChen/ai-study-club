@@ -3,6 +3,12 @@ title: 官方操作參考
 description: GitHub 入門與協作實作的官方文件與延伸閱讀。
 ---
 
+## 課後閱讀
+
+- [Git Commit Message 撰寫慣例](/ai-study-club/courses/git-github/commit-message/)：用 Conventional Commits 寫出清楚的提交紀錄，包含常見類型、完整範例與課堂練習。
+
+## 官方操作參考
+
 查核日期：2026-10-28。教學指南已針對本課情境改寫；介面語系與版本可能影響顯示名稱。
 
 - [GitHub：建立 Template repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository)：Template 是 Repo 設定，需在遠端啟用。
