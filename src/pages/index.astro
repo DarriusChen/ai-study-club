@@ -1,6 +1,7 @@
 ---
 import "../styles/home.css";
 import { getCollection } from "astro:content";
+import CourseCover from "../components/CourseCover.astro";
 
 const base = import.meta.env.BASE_URL;
 const courses = (await getCollection("courses")).sort(
@@ -28,7 +29,7 @@ const featured = courses[0];
       <header class="header">
         <a class="brand" href={base} aria-label="AI 讀書會首頁">
           <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"
-            ><rect width="32" height="32" rx="9" fill="#245cd6"></rect><path
+            ><rect width="32" height="32" rx="9" fill="#168579"></rect><path
               d="M8 10h7v13H8zm9 0h7v13h-7"
               stroke="white"
               stroke-width="1.5"></path><path
@@ -50,11 +51,11 @@ const featured = courses[0];
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy">
             <div class="hello">歡迎來到我們的學習工作室</div>
-            <h1 id="hero-title">一起學 AI，<br />把想法做出來。</h1>
+            <h1 id="hero-title">一起學 AI，<br />把想法「做」出來！</h1>
             <p>
               從「這是什麼」到「我也做到了」!<br />一起探索工具、動手練習，把每次讀書會的收穫，變成自己的能力!
             </p><div class="actions">
-              <a class="button" href="#materials">瀏覽讀書會教材</a><a
+              <a class="button" href="#materials">瀏覽教學資源</a><a
                 class="text-link"
                 href="#learning-map">探索學習方向</a>
             </div>
@@ -79,7 +80,7 @@ const featured = courses[0];
                 aria-label="從認識主題到動手練習，再與夥伴交流分享"
                 ><path
                   d="M28 70h270M90 70C116 70 110 28 140 28h54c31 0 25 42 55 42"
-                  stroke="#abc0e1"
+                  stroke="#a4bcb5"
                   stroke-width="2.5"
                   fill="none"></path><path
                   d="M90 70C116 70 110 28 140 28h54c31 0 25 42 55 42"
@@ -87,7 +88,7 @@ const featured = courses[0];
                   stroke-width="2.5"
                   fill="none"></path><g
                   fill="white"
-                  stroke="#245cd6"
+                  stroke="#168579"
                   stroke-width="2.5"
                   ><circle cx="32" cy="70" r="6"></circle><circle
                     cx="90"
@@ -110,7 +111,7 @@ const featured = courses[0];
                 ><a
                   href={featured
                     ? `${base}courses/${featured.id}/`
-                    : "#materials"}>進入主題</a>
+                    : "#materials"}>開始學習</a>
               </div>
             </article><div class="desk-label">動手試試，比想像中更靠近。</div>
           </div>
@@ -118,7 +119,7 @@ const featured = courses[0];
         <div class="intro-strip">
           <strong>每次學一點，每次做一點。</strong>
           <p>
-            這裡收好讀書會的教材與實作筆記，讓你課前準備、課後複習都找得到。
+            這裡收錄了講者們分享的多元學習資源，讓你課前準備、課後複習都找得到！
           </p>
         </div>
 
@@ -130,26 +131,14 @@ const featured = courses[0];
           <div class="section-head">
             <div>
               <h2 id="materials-title">讀書會教材</h2>
-              <p>接著練習，或回頭重看一次。</p>
+              <p>多元的學習資源，幫你從不同角度探索 AI、補強軟體基礎知識</p>
             </div><span class="count">目前收錄 {courses.length} 個主題</span>
           </div>
 
           {
             courses.map((course) => (
               <article class="course" id={`course-${course.id}`}>
-                <div class="course-art" aria-hidden="true">
-                  <span>{course.data.tagline}</span>
-                  <strong>
-                    {course.data.shortTitle}
-                    <br />
-                    一起實作
-                  </strong>
-                  <div class="steps">
-                    {course.data.topics.map((topic) => (
-                      <span>{topic}</span>
-                    ))}
-                  </div>
-                </div>
+                <CourseCover course={course.data} />
                 <div class="course-body">
                   <div class="tags">
                     {course.data.tags.map((tag) => (
@@ -165,16 +154,14 @@ const featured = courses[0];
                   <div class="course-meta">
                     <>
                       <span>{course.data.audience}</span>
-                      <span>練習時間 {course.data.duration} 分鐘</span>
+                      <span>約 {course.data.duration} 分鐘</span>
+                      <span>投影片・實作指南・延伸閱讀</span>
                     </>
                   </div>
                   <div class="download-row">
                     <a class="button" href={`${base}courses/${course.id}/`}>
-                      進入主題
+                      開始學習 <span aria-hidden="true">→</span>
                     </a>
-                    <span class="course-contents">
-                      Slides · Lab · Resources
-                    </span>
                   </div>
                 </div>
               </article>
@@ -187,82 +174,35 @@ const featured = courses[0];
           id="learning-map"
           aria-labelledby="map-title"
         >
-          <div>
-            <span class="map-kicker">Learning Map</span>
-            <h2 id="map-title">把每次學習，<br />連成自己的路線。</h2>
-            <p>
-              想知道讀書會主題之間有什麼關聯？到學習地圖回顧走過的路，也找找下一個想深入的方向。
-            </p><a
-              href="https://synapse-learning-map.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >探索學習地圖 <span aria-hidden="true">↗</span><span
-                class="sr-only"
-                style="position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)"
-                >（開啟新分頁）</span
-              ></a>
+          <div class="section-head">
+            <div>
+              <h2 id="map-title">學習地圖</h2>
+              <p>把每次學習，連成自己的路線。</p>
+            </div>
           </div>
-          <svg
-            class="map-diagram"
-            viewBox="0 0 420 230"
-            role="img"
-            aria-label="從探索工具到動手實作與分享交流的學習概念示意圖"
-            ><g fill="none" stroke="#aacbc8" stroke-width="2"
-              ><path d="M80 123h72m100 0h75M202 102V56h92M202 143v45h80"
-              ></path></g
-            ><g fill="#aacbc8"
-              ><circle cx="202" cy="65" r="3"></circle><circle
-                cx="202"
-                cy="183"
-                r="3"></circle></g
-            ><rect
-              x="20"
-              y="104"
-              width="96"
-              height="39"
-              rx="19.5"
-              fill="white"
-              stroke="#c0d8d5"></rect><rect
-              x="148"
-              y="98"
-              width="112"
-              height="50"
-              rx="9"
-              fill="#168579"></rect><rect
-              x="301"
-              y="104"
-              width="99"
-              height="39"
-              rx="19.5"
-              fill="white"
-              stroke="#c0d8d5"></rect><rect
-              x="266"
-              y="36"
-              width="111"
-              height="38"
-              rx="19"
-              fill="white"
-              stroke="#c0d8d5"></rect><rect
-              x="260"
-              y="169"
-              width="112"
-              height="38"
-              rx="19"
-              fill="white"
-              stroke="#c0d8d5"></rect><g
-              font-family="sans-serif"
-              font-size="13"
-              text-anchor="middle"
-              fill="#48686b"
-              ><text x="68" y="129">探索工具</text><text
-                x="204"
-                y="129"
-                fill="white">動手實作</text
-              ><text x="351" y="129">分享交流</text><text x="322" y="61"
-                >延伸閱讀</text
-              ><text x="316" y="194">自己的作品</text></g
-            >
-          </svg>
+          <a
+            class="map-panel"
+            href="https://synapse-learning-map.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="map-copy">
+              <h3>找到下一個想探索的方向</h3>
+              <p>看看主題之間的關聯，回顧走過的路，也找到下一步想學的內容。</p>
+              <span class="map-cta">開啟學習地圖 <span aria-hidden="true">↗</span></span>
+              <span class="map-hint">前往 Learning Map，於新分頁開啟</span>
+            </div>
+            <div class="map-preview">
+              <img
+                src={`${base}learning-map.png`}
+                alt="真實學習地圖預覽：Transformer 連結 Attention、Embedding，並延伸至 Vector Database 與 RAG 等主題。"
+                width="1471"
+                height="771"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </a>
         </section>
       </main>
       <footer>
