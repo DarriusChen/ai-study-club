@@ -1,0 +1,31 @@
+.lesson-shell {
+  width: min(1280px, calc(100% - var(--page-gutter) * 2));
+  margin: 48px auto 64px;
+}
+.lesson-course { color: var(--teal); font-size:0.875rem; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: 6px 12px; color: var(--muted); font-size:0.875rem; }
+.breadcrumb a { color: var(--teal); }
+.lesson-shell h1 { margin: 12px 0 24px; font-size: clamp(1.75rem, 5vw, 2.5rem); line-height: 1.4; }
+.lesson-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.lesson-nav a { color: var(--blue); font-size:0.875rem; }
+.lesson-nav a[aria-current="page"] { color: var(--ink); font-weight: 700; }
+.prose { padding-top: 16px; overflow-wrap: anywhere; }
+.prose h2 { font-size:1.5625rem; margin: 40px 0 16px; line-height: 1.5; }
+.prose h3 { font-size:1.25rem; margin: 28px 0 12px; line-height: 1.6; }
+.prose p, .prose ul, .prose ol { margin-block: 16px; }
+.prose li + li { margin-top: 10px; }
+.prose li > p { margin-block: 8px; }
+.prose a { color: var(--blue); }
+.prose pre { padding: 20px; border-radius: 8px; overflow-x: auto; font-size:0.875rem; }
+.prose code { font-family: ui-monospace, monospace; }
+.prose :not(pre) > code { background: var(--pale); padding: 2px 5px; border-radius: 4px; font-size: .9em; }
+.prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font-size:0.875rem; margin-block: 24px; }
+.prose th, .prose td { padding: 12px 14px; border: 1px solid var(--line); text-align: left; min-width: 160px; vertical-align: top; }
+.prose th { background: var(--pale); }
+.prose blockquote { border-left: 3px solid var(--teal); margin-inline: 0; padding-left: 20px; color: var(--muted); }
+.prose h2, .prose h3 { scroll-margin-top: 24px; }
+@media (max-width: 650px) {
+  .lesson-shell { margin-block: 32px 48px; }
+  .prose h2 { font-size:1.375rem; }
+  .prose ul, .prose ol { padding-left: 24px; }
+}

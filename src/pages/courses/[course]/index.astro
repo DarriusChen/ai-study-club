@@ -1,0 +1,78 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import LessonLayout from '../../../layouts/LessonLayout.astro';
+import { materialUrl } from '../../../lib/material-url';
+import '../../../styles/topic.css';
+
+export async function getStaticPaths() {
+  return (await getCollection('courses')).map((course) => ({
+    params: { course: course.id }, props: { course },
+  }));
+}
+
+interface Props { course: CollectionEntry<'courses'>; }
+const { course } = Astro.props;
+const { data } = course;
+const lessons = await getCollection('lessons');
+const resources = await Promise.all(data.materials
+  .filter((material) => material.category === 'resources')
+  .map(async (material) => {
+    const lesson = lessons.find((entry) => entry.id === `${course.id}/${material.href.replace(/\/$/, '')}`);
+    return { material, content: lesson ? await render(lesson) : undefined };
+  }));
+const sections = [
+  { id: 'slides', title: 'Slides', subtitle: '投影片', description: '跟著課程講解認識觀念，課後也能回來複習。' },
+  { id: 'lab', title: 'Lab', subtitle: '動手實作', description: '打開指南，照著步驟把學到的觀念做一次。' },
+];
+---
+
+<LessonLayout title={data.title} description={data.description} course={course} overview>
+  <div class="topic-intro">
+    <p class="topic-description">{data.description}</p>
+    <div class="topic-meta"><span>{data.audience}</span><span>練習時間 {data.duration} 分鐘</span></div>
+    <nav class="topic-jump" aria-label="主題資源">
+      <a href="#slides">Slides 投影片</a>
+      <a href="#lab">Lab 動手實作</a>
+      <a href="#resources">Resources 延伸閱讀</a>
+    </nav>
+  </div>
+
+  <div class="topic-preparation">
+    {data.learningGoals.length > 0 && <section aria-labelledby="goals-title">
+      <h2 id="goals-title">這次會學到</h2>
+      <ul>{data.learningGoals.map((goal) => <li>{goal}</li>)}</ul>
+    </section>}
+    {data.prerequisites.length > 0 && <section aria-labelledby="prepare-title">
+      <h2 id="prepare-title">開始之前</h2>
+      <ul>{data.prerequisites.map((item) => <li>{item}</li>)}</ul>
+    </section>}
+  </div>
+
+  <p class="topic-order">{data.materials.some((material) => material.category === 'slides')
+    ? '建議順序：先看投影片，再完成 Lab，最後依需要延伸閱讀。也可以直接從實作開始。'
+    : '從 Lab 開始：先確認課前準備，再跟著指南動手練習；遇到問題時，搭配常見問題與延伸閱讀。'}</p>
+  <div class="topic-materials">
+    {sections.map((section) => {
+      const materials = data.materials.filter((material) => material.category === section.id);
+      return <section class="material-section" id={section.id} aria-labelledby={`${section.id}-title`}>
+        <h2 id={`${section.id}-title`}>{section.title}<span>{section.subtitle}</span></h2>
+        <p>{section.description}</p>
+        {materials.length > 0 ? <div class="material-links">
+          {materials.map((material, index) => <div>
+            <a class={index === 0 ? 'button' : 'text-link'} href={materialUrl(course.id, material.href)}>{material.label}</a>
+            {material.description && <p>{material.description}</p>}
+          </div>)}
+        </div> : <p class="material-empty">{section.subtitle}尚未提供，之後會整理在這裡。</p>}
+      </section>;
+    })}
+  </div>
+
+  <section class="topic-resources" id="resources" aria-labelledby="resources-title">
+    <h2 id="resources-title">Resources<span>延伸閱讀</span></h2>
+    <p>需要更多說明時，從這些文件與參考資料繼續探索。</p>
+    {resources.length > 0 ? resources.map(({ material, content }) => {
+      const Content = content?.Content;
+      return Content ? <div class="prose"><Content /></div> : <div class="resource-list"><a class="resource" href={materialUrl(course.id, material.href)}><div><strong>{material.label}</strong>{material.description && <p>{material.description}</p>}</div><span aria-hidden="true">↗</span></a></div>;
+    }) : <p class="material-empty">延伸資源尚未提供，之後會整理在這裡。</p>}
+  </section>
+</LessonLayout>

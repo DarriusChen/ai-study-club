@@ -1,0 +1,37 @@
+title: GitHub 入門與協作實作
+shortTitle: GitHub
+order: 1
+tagline: 從自己的作品開始
+description: 從建立自己的 Repo 開始，練習保存版本、建立分支與提出 Pull Request。讓 AI 幫你寫的程式，也能自己管理與合作。
+audience: 適合零程式基礎
+duration: 150
+tags:
+  - 開發入門
+  - 動手練習
+topics:
+  - Commit
+  - Branch
+  - Pull Request
+learningGoals:
+  - 建立自己的 Repo，將專案 Clone 到本機。
+  - 用 Commit 與 Push 保存並同步修改。
+  - 建立分支、提出 Pull Request，完成 Review 與合併。
+prerequisites:
+  - 準備 GitHub 帳號，並在電腦安裝 Git 與 VS Code。
+  - 不需要程式基礎，帶著自己的電腦與瀏覽器即可開始。
+materials:
+  - label: 查看投影片
+    href: /courses/git-github/slides/
+    category: slides
+    description: 跟著 150 分鐘的課堂路線，從版本觀念走到分支、Pull Request 與多人合作。
+  - label: 閱讀實作指南
+    href: lab-guide/
+    category: lab
+    description: 從建立 Repo 到完成協作，依照 Lab 步驟動手練習。
+  - label: 常見問題
+    href: troubleshooting/
+    category: lab
+    description: 遇到帳號設定、提交或同步問題時，從這裡找解法。
+  - label: 延伸閱讀
+    href: resources/
+    category: resources

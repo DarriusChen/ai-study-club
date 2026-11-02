@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import '../styles/home.css';
+import '../styles/lesson.css';
+import { materialUrl } from '../lib/material-url';
+
+interface Props {
+  title: string;
+  description: string;
+  course: CollectionEntry<'courses'>;
+  overview?: boolean;
+}
+
+const { title, description, course, overview = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const courseUrl = `${base}courses/${course.id}/`;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{overview ? course.data.title : `${title}｜${course.data.title}`}｜AI 讀書會</title>
+    <link rel="icon" href={`${base}icon.svg`} type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#lesson">跳到主要內容</a>
+    <header class="header wrap">
+      <a class="brand" href={base}>AI 讀書會</a>
+      <a href={overview ? `${base}#materials` : courseUrl}>{overview ? '返回主題列表' : '返回主題首頁'}</a>
+    </header>
+    <main class="lesson-shell">
+      <nav class="breadcrumb" aria-label="所在位置">
+        <a href={`${base}#materials`}>主題列表</a><span aria-hidden="true">/</span>
+        {overview ? <span aria-current="page">{course.data.shortTitle}</span> : <><a href={courseUrl}>{course.data.shortTitle}</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span></>}
+      </nav>
+      <h1>{title}</h1>
+      {!overview && <nav class="lesson-nav" aria-label="這門課的教材">
+        <a href={courseUrl}>主題首頁</a>
+        {course.data.materials.map((material) => (
+          <a href={materialUrl(course.id, material.href)} aria-current={Astro.url.pathname === materialUrl(course.id, material.href) ? 'page' : undefined}>
+            {material.label}
+          </a>
+        ))}
+      </nav>}
+      <article class={overview ? 'topic-overview' : 'prose'} id="lesson"><slot /></article>
+    </main>
+    <footer class="wrap"><a href={overview ? `${base}#materials` : courseUrl}>{overview ? '返回主題列表' : `返回${course.data.shortTitle}主題首頁`}</a></footer>
+  </body>
+</html>

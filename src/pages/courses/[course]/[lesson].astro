@@ -1,0 +1,30 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import LessonLayout from '../../../layouts/LessonLayout.astro';
+
+export async function getStaticPaths() {
+  const [lessons, courses] = await Promise.all([
+    getCollection('lessons'),
+    getCollection('courses'),
+  ]);
+
+  return lessons.map((lesson) => {
+    const [courseId, lessonId] = lesson.id.split('/');
+    const course = courses.find((entry) => entry.id === courseId);
+    if (!course) throw new Error(`Missing course.yaml for ${lesson.id}`);
+    return { params: { course: courseId, lesson: lessonId }, props: { lesson, course } };
+  });
+}
+
+interface Props {
+  lesson: CollectionEntry<'lessons'>;
+  course: CollectionEntry<'courses'>;
+}
+
+const { lesson, course } = Astro.props;
+const { Content } = await render(lesson);
+---
+
+<LessonLayout title={lesson.data.title} description={lesson.data.description} course={course}>
+  <Content />
+</LessonLayout>
