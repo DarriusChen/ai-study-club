@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { Icon } from 'astro-icon/components';
 import '../styles/home.css';
 import '../styles/lesson.css';
 import { materialUrl } from '../lib/material-url';
@@ -28,8 +29,14 @@ const courseUrl = `${base}courses/${course.id}/`;
   <body>
     <a class="skip" href="#lesson">跳到主要內容</a>
     <header class="header wrap">
-      <a class="brand" href={base}>AI 讀書會</a>
-      <a href={overview ? `${base}#materials` : courseUrl}>{overview ? '返回主題列表' : '返回主題首頁'}</a>
+      <a class="brand" href={base}>
+        <Icon name="lucide:house" class="home-icon" aria-hidden="true" />
+        AI 讀書會
+      </a>
+      <a class="back-link" href={overview ? `${base}#materials` : courseUrl}>
+        <Icon name="lucide:arrow-left" class="back-icon" aria-hidden="true" />
+        {overview ? '返回主題列表' : '返回主題首頁'}
+      </a>
     </header>
     <main class="lesson-shell">
       <nav class="breadcrumb" aria-label="所在位置">
@@ -53,6 +60,11 @@ const courseUrl = `${base}courses/${course.id}/`;
       </nav>}
       <article class={overview ? 'topic-overview' : 'prose'} id="lesson"><slot /></article>
     </main>
-    <footer class="wrap"><a href={overview ? `${base}#materials` : courseUrl}>{overview ? '返回主題列表' : `返回${course.data.shortTitle}主題首頁`}</a></footer>
+    <footer class="wrap">
+      <a class="back-link" href={overview ? `${base}#materials` : courseUrl}>
+        <Icon name="lucide:arrow-left" class="back-icon" aria-hidden="true" />
+        {overview ? '返回主題列表' : `返回${course.data.shortTitle}主題首頁`}
+      </a>
+    </footer>
   </body>
 </html>

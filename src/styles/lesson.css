@@ -1,3 +1,18 @@
+.brand .home-icon {
+  width: 22px;
+  height: 22px;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.back-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
 .lesson-shell {
   width: min(1280px, calc(100% - var(--page-gutter) * 2));
   margin: 48px auto 64px;

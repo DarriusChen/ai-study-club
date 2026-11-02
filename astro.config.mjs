@@ -1,10 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://darriuschen.github.io',
     base: '/ai-study-club/',
+    integrations: [
+      icon({
+        include: {
+          lucide: ['house', 'arrow-left'],
+        },
+      }),
+    ],
     vite: {
       plugins: [
         {
