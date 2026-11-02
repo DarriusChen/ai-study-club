@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 190" fill="none">
+  <path d="M32 130H368" stroke="#8ba4b4" stroke-width="3" />
+  <path d="M104 130C145 130 125 58 170 58H232C277 58 260 130 304 130" stroke="#168579" stroke-width="3" />
+  <g fill="#f0f6f4" stroke="#627f91" stroke-width="3">
+    <circle cx="36" cy="130" r="8" /><circle cx="104" cy="130" r="8" />
+    <circle cx="304" cy="130" r="8" /><circle cx="366" cy="130" r="8" />
+  </g>
+  <g fill="#168579" stroke="#f0f6f4" stroke-width="3">
+    <circle cx="171" cy="58" r="8" /><circle cx="232" cy="58" r="8" />
+  </g>
+  <g fill="#52677b" font-size="14" font-family="sans-serif">
+    <text x="28" y="168">main</text><text x="155" y="29">feature</text><text x="281" y="168">merge</text>
+  </g>
+</svg>

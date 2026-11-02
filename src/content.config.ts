@@ -10,6 +10,7 @@ const courses = defineCollection({
   schema: z.object({
     title: z.string(),
     shortTitle: z.string(),
+    cover: z.string().trim().regex(/^\/(?!\/).+/, "封面路徑必須以 / 開頭，對應 public/ 下的檔案").optional(),
     order: z.number(),
     tagline: z.string(),
     description: z.string(),

@@ -1,7 +1,8 @@
 title: GitHub 入門與協作實作
-shortTitle: GitHub
+shortTitle: GitHub 入門
+cover: /courses/git-github/cover.svg
 order: 1
-tagline: 從自己的作品開始
+tagline: 軟體專案與團隊協作的基礎
 description: 從建立自己的 Repo 開始，練習保存版本、建立分支與提出 Pull Request。讓 AI 幫你寫的程式，也能自己管理與合作。
 audience: 適合零程式基礎
 duration: 150
@@ -9,6 +10,7 @@ tags:
   - 開發入門
   - 動手練習
 topics:
+  - Git Basics
   - Commit
   - Branch
   - Pull Request
