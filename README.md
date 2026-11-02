@@ -59,11 +59,13 @@ courses/
     └── resources.md         # 課程專屬參考資料
 src/
 ├── content.config.ts       # 課程與教材的內容集合定義
+├── components/             # 可重用的 UI（如 CourseCover.astro）
 ├── layouts/                # 教材閱讀版面
 ├── lib/                    # 教材連結處理
 ├── pages/                  # 讀書會首頁、主題首頁與教材路由
 └── styles/                 # 首頁、主題與教材樣式
 public/
+├── courses/git-github/cover.svg # 選填的自訂教材封面
 ├── courses/git-github/slides/ # HTML 投影片與其引用檔案
 └── icon.svg
 .github/workflows/deploy.yaml # GitHub Pages 建置與部署
@@ -95,6 +97,22 @@ astro.config.mjs             # 網站網址、base 路徑及開發設定
 5. 執行 `npm run build` 確認內容結構，再以 `npm run preview` 逐一開啟新增的教材連結。
 
 Markdown 的 `title` 由網站顯示為頁面主標題，本文從 `##` 開始即可。
+
+## 教材封面（選填）
+
+首頁透過 `src/components/CourseCover.astro` 顯示教材封面，版型及樣式都由元件管理。
+未填 `cover` 時，自動以 `shortTitle`、`tagline` 和 `topics` 產生文字封面，不需要另畫圖片或修改首頁。
+
+有自訂封面時，把 SVG、PNG、WebP 或 JPG 放進 `public/courses/課程名稱/`，並在該課的 `course.yaml` 加入：
+
+```yaml
+cover: /courses/git-github/cover.svg
+```
+
+路徑以 `/` 開頭，對應 `public/` 下的檔案；不用填 `public/` 或部署的 `/ai-study-club/` 前綴。
+圖片會等比例縮放、完整顯示，建議使用接近 400:190 的橫向比例。
+封面作為裝飾圖片，課程資訊仍由旁邊的標題與介紹提供。
+複製其他課程的設定時，若沒有封面，直接刪除 `cover` 這一行（不要留空值）。
 
 ## 投影片與下載檔（以 git-github 為例）
 
