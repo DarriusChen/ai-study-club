@@ -1,0 +1,78 @@
+---
+const materials = `${import.meta.env.BASE_URL}materials/`;
+---
+
+<html lang="zh-Hant">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="AI 讀書會的教材與資源入口，一起學習 AI、動手實作，累積自己的作品。" />
+		<title>AI 讀書會｜教材與資源</title>
+	</head>
+	<body>
+		<header>
+			<a class="brand" href={import.meta.env.BASE_URL}>AI 讀書會</a>
+			<nav aria-label="主要導覽"><a href="#materials">教材與資源</a></nav>
+		</header>
+		<main>
+			<section class="intro" aria-labelledby="intro-title">
+				<h1 id="intro-title">一起學 AI，<br />把想法做出來。</h1>
+				<p>從認識工具到動手實作，一起探索、交流與練習。<br class="desktop-break" />這裡整理了讀書會的教材與延伸資源，方便隨時回來複習。</p>
+				<a class="button" href="#materials">瀏覽教材</a>
+			</section>
+			<section class="materials" id="materials" aria-labelledby="materials-title">
+				<h2 id="materials-title">教材與資源</h2>
+				<article>
+					<div class="tags"><span>GitHub</span><span>入門實作</span></div>
+					<h3>GitHub 入門與協作實作</h3>
+					<p>從建立自己的 Repo 開始，練習版本管理、分支與 Pull Request，學會保存作品，也學會與別人一起合作。</p>
+					<p class="details">適合零程式基礎的成員 · 150 分鐘<br />課前準備：GitHub 帳號、Git、VS Code 與瀏覽器</p>
+					<div class="downloads">
+						<a href={`${materials}STUDENT_LAB_GUIDE.md`} download>下載實作指南 <span>Markdown</span></a>
+						<a href={`${materials}TROUBLESHOOTING.md`} download>下載常見問題 <span>Markdown</span></a>
+					</div>
+				</article>
+			</section>
+		</main>
+		<footer>AI 讀書會 · 一起學習，持續實作。</footer>
+	</body>
+</html>
+
+<style>
+	:global(*) { box-sizing: border-box; }
+	:global(body) {
+		margin: 0;
+		background: #fff;
+		color: #18324b;
+		font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+		line-height: 1.8;
+	}
+	:global(a) { color: #245cd6; text-underline-offset: 4px; }
+	:global(a:focus-visible) { outline: 3px solid #168579; outline-offset: 5px; }
+	header, main, footer { width: min(100% - 40px, 960px); margin-inline: auto; }
+	header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 24px; border-bottom: 1px solid #dce5ed; }
+	.brand { color: #18324b; font-size: 20px; font-weight: 700; text-decoration: none; }
+	nav a { font-size: 14px; text-decoration: none; }
+	.intro { padding-block: 72px; }
+	h1 { margin: 0 0 24px; font-size: clamp(36px, 6vw, 56px); line-height: 1.3; letter-spacing: -.03em; }
+	p { max-width: 42em; margin: 0; color: #496176; }
+	.button { display: inline-block; margin-top: 28px; padding: 10px 22px; border-radius: 6px; background: #245cd6; color: #fff; font-weight: 600; text-decoration: none; }
+	.button:hover { background: #1949b1; }
+	.materials { padding-bottom: 64px; scroll-margin-top: 24px; }
+	h2 { margin: 0 0 20px; font-size: 24px; }
+	article { padding: 32px; border-radius: 12px; background: #f2f6fa; border-top: 3px solid #168579; }
+	.tags { display: flex; gap: 12px; color: #126b61; font-size: 14px; }
+	h3 { margin: 12px 0; font-size: clamp(22px, 4vw, 28px); line-height: 1.5; }
+	.details { margin-top: 20px; font-size: 14px; }
+	.downloads { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 24px; }
+	.downloads a { font-weight: 600; }
+	.downloads span { font-size: 12px; font-weight: 400; }
+	footer { padding-block: 24px; border-top: 1px solid #dce5ed; color: #496176; font-size: 14px; }
+	@media (max-width: 540px) {
+		.intro { padding-block: 48px; }
+		article { padding: 24px; }
+		.desktop-break { display: none; }
+		.downloads { flex-direction: column; gap: 12px; }
+	}
+</style>
