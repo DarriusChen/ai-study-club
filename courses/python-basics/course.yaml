@@ -1,0 +1,44 @@
+title: Python 基礎與消費分析實作
+shortTitle: Python 基礎
+order: 2
+tagline: 用消費紀錄做出第一個互動分析工具
+description: 從程式如何處理資料開始，練習變數、條件、資料結構與迴圈，再使用 Pandas 與 Streamlit 完成 SpendSense 消費分析工具。
+audience: 適合零程式基礎
+duration: 120
+tags:
+  - Python 入門
+  - 資料分析
+topics:
+  - Python
+  - Pandas
+  - Streamlit
+  - SpendSense
+learningGoals:
+  - 用輸入、處理與輸出說明程式的運作。
+  - 讀懂並修改變數、條件、資料結構與迴圈。
+  - 讀取 CSV、篩選消費資料，並呈現統計圖表。
+prerequisites:
+  - 準備 Python、VS Code 與可執行 Notebook 的環境，課前先確認 kernel 可使用。
+  - 安裝 pandas、streamlit、plotly；課程從零基礎開始。
+materials:
+  - label: 查看投影片
+    href: /courses/python-basics/slides/
+    category: slides
+    description: 13 張觀念與任務投影片，搭配 Notebook 與 120 分鐘課堂實作。每頁列出教材檔案與小節，按 N 查看講師筆記。
+  - label: SpendSense 實作指南
+    href: lab-guide/
+    category: lab
+    description: 下載骨架與範例資料，完成總花費、類別篩選和圖表。
+  - label: 下載練習骨架
+    href: /courses/python-basics/downloads/spendsense-starter.py
+    category: lab
+  - label: 下載範例 CSV
+    href: /courses/python-basics/downloads/sample.csv
+    category: lab
+  - label: GitHub 程式教材
+    href: https://github.com/NTUST-Data-Analytics-Club/python-course-materials
+    category: resources
+    description: 依 Hello World、資料結構、迴圈與 SpendSense 的順序閱讀。
+  - label: 教材與課後練習
+    href: resources/
+    category: resources
