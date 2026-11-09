@@ -9,7 +9,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "sync:courses": "node scripts/sync-course-assets.mjs",
+    "predev": "npm run sync:courses",
+    "prebuild": "npm run sync:courses"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.150",
