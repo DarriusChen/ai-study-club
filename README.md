@@ -2,7 +2,7 @@
 
 讀書會的教材與資源入口，使用 Astro 與原生 CSS 建立。
 
-網站部署網址：[AI 讀書會](https://darriuschen.github.io/ai-study-club/)。目前提供「GitHub 入門與協作實作」，包含 HTML 投影片、實作指南、常見問題與延伸閱讀。
+網站部署網址：[AI 讀書會](https://darriuschen.github.io/ai-study-club/)。目前提供「GitHub 入門與協作實作」與「Python 基礎與消費分析實作」，包含 HTML 投影片、實作指南與延伸閱讀。
 
 首頁列出讀書會主題；每個主題都有獨立首頁，整理介紹、學習目標、課前準備、Slides、Lab 與 Resources。實作指南及常見問題由 Markdown 產生站內閱讀頁面。
 
@@ -138,3 +138,13 @@ materials:
 在 Astro 頁面撰寫其他站內連結時，需使用 `import.meta.env.BASE_URL` 組成網址；上述自動補上 base 的處理僅適用於透過 `src/lib/material-url.ts` 產生的教材連結。
 未準備好的成品先不要加入 `materials`，避免出現無法開啟的入口。
 主題首頁的 Slides 與 Lab 區塊在沒有教材時，會顯示「尚未提供」。
+
+## Python 課程投影片
+
+原稿在 `courses/python-basics/slides/`，可直接開啟 `index.html` 播放。網站入口是 `/ai-study-club/courses/python-basics/slides/`。
+
+共 13 張投影片，涵蓋 120 分鐘的示範、Notebook 練習及 SpendSense 實作。使用方向鍵切換、N 查看講師筆記、P 開啟同步講師視窗、O 開目錄、F 進入全螢幕。瀏覽器列印可輸出全部 13 頁。
+
+`courses/*/slides/` 與 `courses/*/downloads/` 為可編輯來源。`npm run dev`、`npm run build` 前會自動同步至 `public/courses/`；修改來源後，開發期間可執行 `npm run sync:courses` 再重新整理。直接使用 `astro dev` 時需先手動同步。
+
+SpendSense 截圖來自本機執行原專案 `app.py` 並實際上傳 `data/sample.csv`，截取實際消費明細與分類圖表。練習骨架與範例 CSV 在 `courses/python-basics/downloads/`，課程頁與實作指南都有下載入口。
