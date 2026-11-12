@@ -43,16 +43,8 @@ git clone https://github.com/NTUST-Data-Analytics-Club/python-course-materials.g
 
 新版檔案為 `01-basics/loops.ipynb`；`03-function` 目前尚未提供教材。這次兩小時主線不安排獨立函式章節。Set、Tuple 的完整方法與推導式可在課後依順序補完。
 
-## 自我檢查
-
-- Hello World §10：紅茶 3 杯，共 150 元，超過 130 元預算 20 元。
-- Loops §4.1：總金額 225 元；超過 50 元的社員依序為 Darrius、Zhu。
-- Loops §4.2：50、80、110，存錢 3 次；初始值若為 100，迴圈執行 0 次。
-- Loops §4.3：結果 `[40, 65]`，遇到 120 後不再處理最後的 35。
-- 資料結構「整理飲料訂單」：4 筆訂單、3 種飲料，編號 1004 對應綠茶；兩筆 Zhu 都要保留。
-
 ## SpendSense 的課堂補充
 
-[實作指南](../lab-guide/)使用網站提供的練習骨架；它以同一份篩選資料計算選取總額與分類圖表。GitHub 原始 `app.py` 的選單只篩選明細，下方圖表仍統計整份 CSV。閱讀時先確認兩份版本各自使用哪份資料。
+[實作指南](/ai-study-club/courses/python-basics/lab-guide/)使用網站提供的練習骨架；它以同一份篩選資料計算選取總額與分類圖表。GitHub 原始 `app.py` 的選單只篩選明細，下方圖表仍統計整份 CSV。閱讀時先確認兩份版本各自使用哪份資料。
 
 `analysis.ipynb` 原有 Matplotlib 匯入與最後的繪圖範例，但專題 requirements 尚未列 Matplotlib。本次先只執行 Pandas 匯入與分組分析，圖表在 Streamlit 完成；日期趨勢應依日期排序。
