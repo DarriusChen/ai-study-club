@@ -23,7 +23,7 @@ const courses = defineCollection({
     materials: z.array(z.object({
       label: z.string(),
       href: z.string(),
-      category: z.enum(['slides', 'lab', 'resources']),
+      category: z.enum(['slides', 'lab', 'practice', 'references', 'help']),
       description: z.string().optional(),
     })).min(1),
   }),

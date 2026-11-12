@@ -32,8 +32,45 @@ materials:
     description: 從建立 Repo 到完成協作，依照 Lab 步驟動手練習。
   - label: 常見問題
     href: troubleshooting/
-    category: lab
+    category: help
     description: 遇到帳號設定、提交或同步問題時，從這裡找解法。
-  - label: 延伸閱讀
-    href: resources/
-    category: resources
+  - label: 課後練習與自我檢查
+    href: practice/
+    category: practice
+    description: 回答核心觀念題，並練習替實際修改撰寫 Commit message。
+  - label: Git Commit Message 撰寫慣例
+    href: commit-message/
+    category: references
+    description: 認識 Conventional Commits 的格式、常見類型與實際範例。
+  - label: GitHub：建立 Template repository
+    href: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository
+    category: references
+    description: 將講師 Repo 設定為可重複使用的 Template。
+  - label: GitHub：從 Template 建立 Repo
+    href: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+    category: references
+    description: 從課程 Template 建立自己的新 Repo。
+  - label: VS Code：Repo、Clone 與遠端
+    href: https://code.visualstudio.com/docs/sourcecontrol/repos-remotes
+    category: references
+    description: 查看 Clone、Push、Pull 與遠端操作。
+  - label: VS Code：Stage 與 Commit
+    href: https://code.visualstudio.com/docs/sourcecontrol/staging-commits
+    category: references
+    description: 查看 Diff、暫存、提交與捨棄變更。
+  - label: VS Code：Branch
+    href: https://code.visualstudio.com/docs/sourcecontrol/branches-worktrees
+    category: references
+    description: 建立、切換與發佈分支。
+  - label: GitHub：Review Pull Request
+    href: https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request
+    category: references
+    description: 留言、Approve 或 Request changes。
+  - label: GitHub：邀請 Collaborator
+    href: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository
+    category: references
+    description: 邀請成員加入個人 Repo 協作。
+  - label: GitHub：設定 Pages
+    href: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+    category: references
+    description: 從分支部署 GitHub Pages。

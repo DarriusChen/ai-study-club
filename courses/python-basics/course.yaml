@@ -35,10 +35,15 @@ materials:
   - label: 下載範例 CSV
     href: /courses/python-basics/downloads/sample.csv
     category: lab
+  - label: 課後練習與自我檢查
+    href: practice/
+    category: practice
+    description: 完成延伸任務，再用預期結果檢查 Python 基礎與 SpendSense。
   - label: GitHub 程式教材
     href: https://github.com/NTUST-Data-Analytics-Club/python-course-materials
-    category: resources
+    category: references
     description: 依 Hello World、資料結構、迴圈與 SpendSense 的順序閱讀。
-  - label: 教材與課後練習
+  - label: 教材對照與延伸閱讀
     href: resources/
-    category: resources
+    category: references
+    description: 對照投影片、GitHub 程式教材與建議閱讀順序。
