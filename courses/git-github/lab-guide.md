@@ -152,12 +152,8 @@ A、B 都切回 `main` → Pull → 重新整理網站。兩人看到相同的�
 
 Repo → Settings → Pages → Source 選 **Deploy from a branch** → Branch 選 `main`、資料夾選 `/(root)` → Save。等待部署完成後，開啟 Pages 頁面顯示的網址。若還沒更新，先看 Actions 部署結果，再重新整理；Push 不保證立即上線。未合併的 feature 分支不會改變這個 main 網站。
 
-## 離場前，回答五題
+## 完成課堂任務後
 
-1. Git 與 GitHub 各負責什麼？
-2. Commit 後沒 Push，別人能看到新版本嗎？
-3. 為什麼 feature 的修改在 Merge 前不會出現在 main？
-4. CSS 沒 Commit 就改壞，該在哪裡還原？
-5. 在 GitHub Merge 後，為什麼本機還要切 main 並 Pull？
+前往[課後練習與自我檢查](../practice/)，回答五個核心觀念問題，再練習替實際修改撰寫 Commit message。
 
 交給講師：Repo 網址、Lab 01 Commit 訊息、一張 Merged PR 網址，以及本機 main 的完成畫面。合作組再加上兩張有互相 Review 的 PR。不要提交帳號密碼或私人資料。
